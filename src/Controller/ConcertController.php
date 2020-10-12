@@ -19,6 +19,24 @@ class ConcertController extends AbstractController
      */
     public function indexAction()
     {
-        return $this->render('Concert/index.html.twig');
+        $concertList = [
+                [
+                    'date' => '2015/05/03',
+                    'time' => '14:00',
+                    'place' => '東京文化会館',
+                    'available' => false,
+                ],
+                [
+                    'date'=> '2016/01/10',
+                    'time' => '14:00',
+                    'place' => '渋谷公会堂',
+                    'available' => true,
+                ],
+            ];
+
+
+        return $this->render('Concert/index.html.twig',
+            ['concertList' => $concertList]
+        );
     }
 }
