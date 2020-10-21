@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use ContainerOdX77D1\getForm_ChoiceListFactory_CachedService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +21,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 /**
  * @Route("/inquiry", methods={"GET","HEAD"})
  */
+
 
 class InquiryController  extends AbstractController
 {
@@ -37,8 +39,8 @@ class InquiryController  extends AbstractController
             ])
             ->add('type',ChoiceType::class,[
                 'choices' => [
-                    '公演について',
-                    'その他',
+                    '公演について' => true,
+                    'その他' => false,
                     ],
                 'expanded' => true,
                 ])
@@ -52,5 +54,7 @@ class InquiryController  extends AbstractController
             ['form' => $form->createView()]
         );
     }
+
+
 
 }
