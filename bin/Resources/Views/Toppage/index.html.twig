@@ -52,5 +52,7 @@
 
 {{ include("Common/information.html.twig") }}
 
-{{ render(controller("AppBundle:Blog:latestList")) }}
+
+{{ render(controller('App\\Controller\\BlogController::latestListAction')) }}
+
 {% endblock %}
