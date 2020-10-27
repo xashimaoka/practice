@@ -23,7 +23,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
  */
 class InquiryController  extends AbstractController
 {
-    private function createInquiryForm(): FormInterface
+    private function createInquiryForm(): FormInterface //関数:出力される値の種類
     {
         $form = $this->createFormBuilder()
             ->add('name', TextType::class)
