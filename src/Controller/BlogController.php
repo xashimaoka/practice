@@ -16,16 +16,9 @@ class BlogController extends AbstractController
 {
     public function latestListAction()
     {
-        $blogList = [
-                [
-                    'targetDate' => '2015/03/15',
-                    'title' => '東京公演レポート'
-                ],
-                [
-                    'targetDate' => '2015/02/15',
-                    'title' => '最近の練習風景'
-                ],
-            ];
+        $em = $this->getDoctrine()->getManager();//エンティティマネージャーを取得
+        $blogArticleRepository = $em->getRepository('AppBundle:BlogArticle');
+        $blogList = $blogArticleRepository->find([],['targetDate' => 'DESC']);
 
 
         return $this->render('Blog/latestList.html.twig',
