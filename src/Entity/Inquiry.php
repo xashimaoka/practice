@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ConferenceRepository;
+use App\Repository\inquiryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ConferenceRepository::class)
  */
-class Conference
+class Inquiry
 {
     /**
      * @ORM\Id

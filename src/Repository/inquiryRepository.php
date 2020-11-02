@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Conference;
+use App\Entity\Inquiry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Conference|null find($id, $lockMode = null, $lockVersion = null)
- * @method Conference|null findOneBy(array $criteria, array $orderBy = null)
- * @method Conference[]    findAll()
- * @method Conference[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Inquiry|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Inquiry|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Inquiry[]    findAll()
+ * @method Inquiry[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ConferenceRepository extends ServiceEntityRepository
+class inquiryRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Conference::class);
+        parent::__construct($registry, Inquiry::class);
     }
 
     // /**

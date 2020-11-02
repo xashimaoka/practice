@@ -25,7 +25,9 @@ class InquiryController  extends AbstractController
 {
     private function createInquiryForm(): FormInterface //関数:出力される値の種類
     {
-        $form = $this->createFormBuilder()
+        $form = $this->createFormBuilder($data = null, [
+            'data_class' => \App\Entity\Inquiry::class, //第一引数に$data, 第二引数にclass名を指定
+        ])
             ->add('name', TextType::class)
             ->add('email',TextType::class)
             ->add('tel',TextType::class,[
@@ -76,7 +78,14 @@ class InquiryController  extends AbstractController
         {
             $data = $form->getData();
 
-            $message = (new \Swift_Message()) //メールメッセージの作成
+            //databaseへの登録
+            $em = $this->getDoctrine()->getManager(); //エンティティマネージャーを取得
+            $em->persist($data); //エンティティをdoctrineの管理下へ
+            $em->flush(); //変更をデータベースに適用
+
+
+            //メールメッセージの作成
+            $message = (new \Swift_Message())
                 ->setSubject('webサイトからのお問い合わせ')
                 ->setFrom('webmaster@example.com')
                 ->setTo('admin@example.com')
