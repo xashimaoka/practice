@@ -23,7 +23,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
  */
 class InquiryController  extends AbstractController
 {
-    private function createInquiryForm(): FormInterface
+    private function createInquiryForm(): FormInterface //関数:出力される値の種類
     {
         $form = $this->createFormBuilder()
             ->add('name', TextType::class)
@@ -68,12 +68,27 @@ class InquiryController  extends AbstractController
     /**
      * @Route("/", methods={"POST","HEAD"})
      */
-    public function indexPostAction(Request $request): Response
+    public function indexPostAction(Request $request, \Swift_Mailer $mailer): Response //request引数を指定
     {
         $form = $this->createInquiryForm();
         $form->handleRequest($request);
         if ($form->isValid())
         {
+            $data = $form->getData();
+
+            $message = (new \Swift_Message()) //メールメッセージの作成
+                ->setSubject('webサイトからのお問い合わせ')
+                ->setFrom('webmaster@example.com')
+                ->setTo('admin@example.com')
+                ->setBody(
+                    $this->renderView(
+                        'mail/inquiry.txt.twig',
+                        ['data' => $data]
+                    )
+                );
+
+            $mailer->send($message);
+
             return $this->redirect(
                 $this->generateUrl('app_inquiry_complete'));
         }
