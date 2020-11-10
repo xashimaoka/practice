@@ -8,17 +8,21 @@
 
 namespace App\Controller;
 
+use App\Repository\BlogArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
 {
-    public function latestListAction()
+    /**
+     * @param BlogArticleRepository $blogArticleRepository
+     * @return Response
+     * @Route("/blog")
+     */
+    public function latestList(BlogArticleRepository $blogArticleRepository):Response
     {
-        $em = $this->getDoctrine()->getManager();//エンティティマネージャーを取得
-        $blogArticleRepository = $em->getRepository('AppBundle:BlogArticle');
-        $blogList = $blogArticleRepository->find([],['targetDate' => 'DESC']);
+        $blogList = $blogArticleRepository->findBy([],['targetDate' => 'DESC']); //エンティティリポジトリのファインダメソッドを実行して情報取得
 
 
         return $this->render('Blog/latestList.html.twig',
