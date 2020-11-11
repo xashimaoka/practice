@@ -16,7 +16,8 @@
     <section id="inquiry-sec">
         <div class="container">
             <div class="row pad-row" >
-                {{ form_start(form) }}
+                {#クライアントサイドバリデーションの無効化#}
+                {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
                 <table class="table">
                     <tr>
 

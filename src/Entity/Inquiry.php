@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\inquiryRepository;
+use Symfony\Component\Validator\Constraints As Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,11 +20,16 @@ class Inquiry
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\NotBlank()
+     * @Assert\Length(max=30)
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
+     * @Assert\Length(max=100)
+     * @Assert\Email()
      */
     private $email;
 
