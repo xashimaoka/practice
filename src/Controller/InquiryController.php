@@ -49,32 +49,13 @@ class InquiryController  extends AbstractController
     }
 
     /**
-     * @Route("/", methods={"GET","HEAD"})
+     * @Route("/", methods={"POST","GET"})
      */
-    public function indexAction(): Response
-    {
-        return $this->render('Inquiry/index.html.twig',
-            ['form' => $this->createInquiryForm()->createView()]
-        );
-    }
-
-    /**
-     * @Route("/complete")
-     */
-    public function completeAction(): Response
-    {
-        return $this->render('Inquily/complete.html.twig');
-    }
-
-
-    /**
-     * @Route("/", methods={"POST","HEAD"})
-     */
-    public function indexPostAction(Request $request, \Swift_Mailer $mailer): Response //request引数を指定
+    public function index(Request $request, \Swift_Mailer $mailer): Response //request引数を指定
     {
         $form = $this->createInquiryForm();
         $form->handleRequest($request);
-        if ($form->isValid())
+        if ($form->isSubmitted() && $form->isValid())
         {
             $data = $form->getData();
 
@@ -104,8 +85,16 @@ class InquiryController  extends AbstractController
 
 
         return $this->render('Inquiry/index.html.twig',
-            ['form' => $this->createInquiryForm()->createView()]
+            ['form' => $form->createView()]
         );
+    }
+
+    /**
+     * @Route("/complete")
+     */
+    public function completeAction(): Response
+    {
+        return $this->render('Inquily/complete.html.twig');
     }
 
 }
