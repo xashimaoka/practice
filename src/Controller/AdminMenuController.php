@@ -2,15 +2,17 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 
-class AdminMenuController extends Controller
+class AdminMenuController extends AbstractController
 {
     /**
+     * @Return Response
      * @Route("/admin/")
      */
-    public function indexAction()
+    public function indexAction(): Response
     {
         return $this->render('Admin/Common/index.html.twig');
     }
