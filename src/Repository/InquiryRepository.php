@@ -12,7 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Inquiry[]    findAll()
  * @method Inquiry[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class inquiryRepository extends ServiceEntityRepository
+class InquiryRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
