@@ -19,6 +19,8 @@ class Inquiry
     private $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=30)
      * @Assert\NotBlank()
      * @Assert\Length(max=30)
@@ -26,6 +28,8 @@ class Inquiry
     private $name;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank()
      * @Assert\Length(max=100)
@@ -34,17 +38,27 @@ class Inquiry
     private $email;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=20, nullable=true)
+     * @Assert\Length(max=20)
+     * @ASSERT\Regex(pattern="/^[0-9-]+$/")
      */
     private $tel;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank()
      */
     private $type;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $content;
 
