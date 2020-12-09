@@ -2,34 +2,43 @@
 
 namespace App\Entity;
 
-use App\Repository\BlogArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * BlogArticle
+ *
  * @ORM\Table(name="blog_article")
- * @ORM\Entity(repositoryClass=BlogArticleRepository::class)
+ * @ORM\Entity
  */
 class BlogArticle
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100, nullable=false)
      */
     private $title;
 
     /**
-     * @ORM\Column(name="target_date",type="date")
+     * @var \DateTime
+     *
+     * @ORM\Column(name="target_date", type="date", nullable=false)
      */
     private $targetDate;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text", length=0, nullable=false)
      */
     private $content;
 
@@ -73,4 +82,6 @@ class BlogArticle
 
         return $this;
     }
+
+
 }
