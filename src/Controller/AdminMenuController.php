@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,10 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminMenuController extends AbstractController
 {
     /**
-     * @Return Response
-     * @Route("/admin/")
+     * @return Response
+     * @Route("/admin")
      */
-    public function indexAction(): Response
+    public function index(): Response
     {
         return $this->render('Admin/Common/index.html.twig');
     }

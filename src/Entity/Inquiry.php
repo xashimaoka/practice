@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\inquiryRepository;
+use App\Repository\InquiryRepository;
 use Symfony\Component\Validator\Constraints As Assert;
 use Doctrine\ORM\Mapping as ORM;
 
