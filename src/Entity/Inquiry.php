@@ -62,6 +62,16 @@ class Inquiry
      */
     private $content;
 
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $processStatus;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $processMemo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -125,5 +135,38 @@ class Inquiry
         $this->content = $content;
 
         return $this;
+    }
+
+    public function getProcessStatus(): ?string
+    {
+        return $this->processStatus;
+    }
+
+    public function setProcessStatus(string $processStatus): self
+    {
+        $this->processStatus = $processStatus;
+
+        return $this;
+    }
+
+    public function getProcessMemo(): ?string
+    {
+        return $this->processMemo;
+    }
+
+    public function setProcessMemo(string $processMemo): self
+    {
+        $this->processMemo = $processMemo;
+
+        return $this;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function __construct()
+    {
+        $this->processStatus = 0;
+        $this->processMemo = '';
     }
 }
