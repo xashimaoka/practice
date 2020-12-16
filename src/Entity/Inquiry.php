@@ -63,12 +63,18 @@ class Inquiry
     private $content;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(groups={"admin"})
      */
     private $processStatus;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(groups={"admin"})
      */
     private $processMemo;
 
