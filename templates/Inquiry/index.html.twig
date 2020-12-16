@@ -68,9 +68,12 @@
                     </tr>
                 </table>
                 <div class="text-center">
+
                     {#フォームの送信ボタンを出力#}
                     {{ form_widget(form.submit, {"attr":{"class":"btn btn-primary"}}) }}
                 </div>
+                {{ form_rest(form) }}
+
                 {{ form_end() }}
             </div>
         </div>
