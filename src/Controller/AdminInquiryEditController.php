@@ -16,14 +16,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\FormInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-
-/*
- * @Route("admin/inquiry")
+/**
+ * @Route("/admin/inquiry")
  */
 class AdminInquiryEditController extends AbstractController
 {
-    private function createInquiryForm($inquiry)
+    private function createInquiryForm($inquiry): FormInterface
     {
         return $this->createFormBuilder($inquiry, //初期値となるエンティティオブジェクト
             ["validation_groups" => ["admin"]])
@@ -43,7 +43,7 @@ class AdminInquiryEditController extends AbstractController
             ->getForm();
     }
     /**
-     * @Route("/{id}/edit", methods={={"GET","HEAD"})
+     * @Route("/{id}/edit", methods={"GET","HEAD"})
      * @ParamConverter("inquiry",class="App:Inquiry")
      */
     public function input(Inquiry $inquiry)
@@ -57,7 +57,7 @@ class AdminInquiryEditController extends AbstractController
             ]);
     }
     /**
-     * @Route("/{id}/edit", methods={={"POST","GET"})
+     * @Route("/{id}/edit", methods={"POST","GET"})
      * @ParamConverter("inquiry",class="App:Inquiry")
      */
     public function inputPost(Request $request, Inquiry $inquiry):Response
