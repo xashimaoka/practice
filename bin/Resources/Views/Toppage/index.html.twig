@@ -44,7 +44,7 @@
                     クラシックシンフォニー楽団の活動報告や、コンサートの舞台裏、普段の練習風景、
                     団員の音楽に対する思いを綴っています。
                 </p>
-                <a href="{{ path("app_toppage_index") }}" class="btn btn-primary">詳細</a>
+                <a href="{{ path("app_blog_latestlist") }}" class="btn btn-primary">詳細</a>
             </div>
         </div>
     </div>
@@ -52,7 +52,5 @@
 
 {{ include("Common/information.html.twig") }}
 
-
-{{ render(controller('App\\Controller\\BlogController::latestListAction')) }}
-
+{{ render(controller('App\\Controller\\BlogController::latestList')) }}
 {% endblock %}

@@ -29,11 +29,11 @@ class AdminInquiryEditController extends AbstractController
             ["validation_groups" => ["admin"]])
             ->add('processStatus',ChoiceType::class,[
                 'choices' => [
-                    '未対応',
-                    '対応中',
-                    '対応済',
+                    '未対応' =>'0',
+                    '対応中' =>'1',
+                    '対応済' =>'2',
                     ],
-                'empty_data' => 0,
+                'empty_data' => '0',
                 'expanded' => true,
                 ])
             ->add('processMemo',TextareaType::class)

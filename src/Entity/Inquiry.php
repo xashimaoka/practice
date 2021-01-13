@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints As Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ConferenceRepository::class)
+ * @ORM\Entity(repositoryClass=InquiryRepository::class)
  */
 class Inquiry
 {
