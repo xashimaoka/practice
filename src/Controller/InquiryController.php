@@ -94,7 +94,7 @@ class InquiryController  extends AbstractController
      */
     public function completeAction(): Response
     {
-        return $this->render('Inquily/complete.html.twig');
+        return $this->render('Inquiry/complete.html.twig');
     }
 
 }
