@@ -40,8 +40,10 @@ class AdminInquiryListController extends AbstractController
 
         $inquiryList = $inquiryRepository->findAllByKeyword($keyword);
 
-        return $this->render('Admin/Inquiry/index.html.twig',
-            ['inquiryList' => $inquiryList]
+        return $this->render('Admin/Inquiry/index.html.twig', [
+                'inquiryList' => $inquiryList,
+                'form' => $form->createView(),//formはviewにして渡す必要がある
+            ]
         );
     }
 
