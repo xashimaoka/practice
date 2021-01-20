@@ -26,7 +26,7 @@ class InquiryRepository extends ServiceEntityRepository
             ->where('i.name LIKE :keyword')
             ->orWhere('i.tel LIKE :keyword')
             ->orWhere('i.email LIKE :keyword')
-            ->orWhere('i.id','DESC')
+            ->orderBy('i.id','DESC')
             ->setParameters([
                 ':keyword' => '%'.$keyword.'%'
             ])
