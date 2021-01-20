@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Inquiry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +18,22 @@ class InquiryRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Inquiry::class);
+    }
+
+    public function findAllByKeyword($keyword)
+    {
+        $query = $this->createQueryBuilder('i')
+            ->where('i.name LIKE :keyword')
+            ->orWhere('i.tel LIKE :keyword')
+            ->orWhere('i.email LIKE :keyword')
+            ->orWhere('i.id','DESC')
+            ->setParameters([
+                ':keyword' => '%'.$keyword.'%'
+            ])
+            ->getQuery();
+
+        return new ArrayCollection($query->getResult());
+
     }
 
     // /**
